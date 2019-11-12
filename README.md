@@ -1,9 +1,10 @@
-# Basic commands
+# Tutorial
 In order to send modifications, you should add them to a commit, then create a commit and finally push your commit to repository. 
 Before doing any modifications, be sure to work with the latest version. 
 Before leaving, be sure to send your modifications (if possible, tested modifications). 
 
 ## To set up everything (do this only once)
+
 ### Create a github account
 Then send me your nickname so I can add you as contributor
 
@@ -44,23 +45,34 @@ git push --set-upstream origin master
 If you have a problem, tell me. For all next moficication, `git push` without following parameters is enough.
 Don't forget to `git pull` every time you wnat to work on the project so have the latest versions of files.
 
-# Usefule commands
-## To get latest version from github
-`git pull`
+# Useful commands
 
-## To see local modifications, actual status of commits ...:
-`git status`
+To get latest version from github
+```
+git pull
+```
 
-## To add specific modified file to next commit:
-`git add <filePath>`
+To see local modifications, actual status of commits ...:
+```
+git status
+```
 
-## To add all modified files to commit:
-`git add .`
+To add specific modified file to next commit:
+```
+git add <filePath>
+```
 
-## To create the commit with a message:
-`git commit -m "Describe the modifications here"`
+To add all modified files to commit:
+```
+git add .
+```
 
-## To push the commit to the github repository:
-`git push`
+To create the commit with a message:
+```
+git commit -m "Describe the modifications here"
+```
 
-New version
+To push the commit to the github repository:
+```
+git push
+```
