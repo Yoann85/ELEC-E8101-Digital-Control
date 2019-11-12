@@ -19,8 +19,7 @@ You can past text in console using the mouse's middle button
 ```
 git init
 git remote add origin https://github.com/Yoann85/ELEC-E8101-Digital-Control.git
-git branch
-git push --set-upstream origin master
+git pull origin master
 ```
 
 If you have a problem, tell me.
