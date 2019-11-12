@@ -8,7 +8,7 @@
 \input{./Scripts/tickzInit}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %
 
-\title{\Huge ELEC-E8101 Group project: \\ Lab A report \\ Group 11}
+\title{\Huge ELEC-E8101 Group project: \\ Lab B report \\ Group 11}
 \date{\today}
 \author{HOUILLE Florent, MONTE SASTRE Enrique, SOULARD Yoann, WANG Tong}
 
@@ -22,7 +22,28 @@
 \subsection*{Reporting of Task 5.1}
 
 %/////5.1.1/////%
+We implemented our PID with the values we obtained in lab A. Unfortunately, the sampling time (42ms) was not working at all. The robot's wheels were just stuck, making a nearly imperciptible back and forth movement. If the sampling time would have been too high, the system would have been unstable and the command would have maxed the limit out right at the beginning. So we didn't find a good reason to explain this behaviour. We tried to bend the robot to force the wheels in one particular direction, but still they are alterning quickly between forward and backward movement.
+So instead we used the minimum sampling time (5 ms) and tuned the PID's parameter to finally obtain :
 
+\begin{equation*}
+K_p=-250   ;   K_i=-500   ;   K_d=-0.8
+\end{equation*}
+
+Actually these parameters were difficult to tune because the robot's behaviour is highly depend of its initial angle. For instance sometimes it could stay up for more than 5 seconds and other times it fell in only 1 second with the exact same parameters set. We decreased $K_p$ to get a smoother behaviour around the null angle (i.e. improve stability, prevent jitters). We decreased integral term to prevent overshoot (once the robot reached the null angle, it was falling the other side). We increased derivative term so that the robot is better ``aware'' that it is going to fall down and can act before it's too late. Here is a result we recorded with Simulink :
+\begin{figure}[H]
+  \includegraphics[width=\linewidth/2]{LabB/Task51_thetab.pdf}
+  \includegraphics[width=\linewidth/2]{LabB/Task51_xw.pdf}
+  \includegraphics[width=\linewidth/2]{LabB/Task51_u.pdf}
+  \caption{Simulation results (the robot falls after 4 seconds)}
+  \label{fig:fig1}
+\end{figure}
+
+One can see that the command is oscillating. This might be due to high frequency noises coming from the sensors and then transmitted to the PID's derivative action (we didn't use any filter).
+
+%/////////////////////////////////////////////////////////////%
+%/////////////////////////TASK 5.2/////////////////////////%
+%/////////////////////////////////////////////////////////////%
+\subsection*{Reporting of Task 5.2}
 
 \end{document}
 
@@ -60,7 +81,6 @@
 %  \caption{Description of figure}
 %  \label{fig:fig1}
 %\end{figure}
-
 
 %	4 FIGURES displayed 2 by 2 , with a global description
 %\begin{figure}[H]
