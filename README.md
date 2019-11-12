@@ -8,7 +8,7 @@ Before leaving, be sure to send your modifications (if possible, tested modifica
 Then send me your nickname so I can add you as contributor
 
 ### Follow this tutorial
-[Follow step 1 and 2 is enough](https://help.github.com/en/github/getting-started-with-github/set-up-git#setting-up-git)
+[Install the bash, set you username and email](https://help.github.com/en/github/getting-started-with-github/set-up-git#setting-up-git)
 
 Then give me your username so I can add you as contributor.
 
