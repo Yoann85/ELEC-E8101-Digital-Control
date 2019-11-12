@@ -20,10 +20,31 @@ You can past text in console using the mouse's middle button
 git init
 git remote add origin https://github.com/Yoann85/ELEC-E8101-Digital-Control.git
 git pull origin master
+git push --set-upstream origin master
 ```
+Now you should have all the files.
 
-If you have a problem, tell me.
+### Send your first modifications
+Modify the READM.md file for test purpose.
+Save it and then try this command:
+```
+git status
+```
+You should see the readme file in red because it has been modified in you local copy of the project.
 
+You can add modified files to your commit (here only README.md):
+```
+git add .
+```
+Then you can create the commit and try to send it
+```
+git commit -m "my first commit"
+git push --set-upstream origin master
+```
+If you have a problem, tell me. For all next moficication, `git push` without following parameters is enough.
+Don't forget to `git pull` every time you wnat to work on the project so have the latest versions of files.
+
+# Usefule commands
 ## To get latest version from github
 `git pull`
 
