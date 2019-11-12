@@ -1,0 +1,10 @@
+#Ignore everything
+*
+
+#Except these files
+!.gitignore
+!README.md
+
+#Except this folders
+!Report/*
+!Images/*
