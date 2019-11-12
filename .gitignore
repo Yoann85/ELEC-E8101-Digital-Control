@@ -1,10 +1,11 @@
-#Ignore everything
-*
+#Ignore all
+/*
 
 #Except these files
 !.gitignore
 !README.md
 
+
 #Except this folders
-!Report/*
-!Images/*
+!/Reports
+!/Images
