@@ -5,7 +5,9 @@
 !.gitignore
 !README.md
 
-
 #Except this folders
 !/Reports
 !/Images
+
+#Ignore these files in folders
+/Reports/*.synctex.gz
