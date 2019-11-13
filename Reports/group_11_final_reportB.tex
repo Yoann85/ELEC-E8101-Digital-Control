@@ -26,19 +26,29 @@ We implemented our PID with the values we obtained in lab A. Unfortunately, the 
 So instead we used the minimum sampling time (5 ms) and tuned the PID's parameter to finally obtain :
 
 \begin{equation*}
-K_p=-250   ;   K_i=-500   ;   K_d=-0.8
+K_p=-250   ;   K_i=-500   ;   K_d=-0.6
 \end{equation*}
 
 Actually these parameters were difficult to tune because the robot's behaviour is highly depend of its initial angle. For instance sometimes it could stay up for more than 5 seconds and other times it fell in only 1 second with the exact same parameters set. We decreased $K_p$ to get a smoother behaviour around the null angle (i.e. improve stability, prevent jitters). We decreased integral term to prevent overshoot (once the robot reached the null angle, it was falling the other side). We increased derivative term so that the robot is better ``aware'' that it is going to fall down and can act before it's too late. Here is a result we recorded with Simulink :
+
 \begin{figure}[H]
-  \includegraphics[width=\linewidth/2]{LabB/Task51_thetab.pdf}
-  \includegraphics[width=\linewidth/2]{LabB/Task51_xw.pdf}
-  \includegraphics[width=\linewidth/2]{LabB/Task51_u.pdf}
-  \caption{Simulation results (the robot falls after 4 seconds)}
+\centering
+\subfloat[$u(t)$]{
+  	\includegraphics[width=\linewidth/2]{LabB/Task51_u.pdf}
+  }
+  \\
+  \subfloat[$\theta_b(t)$]{
+  	\includegraphics[width=\linewidth/2]{LabB/Task51_thetab.pdf}
+  }
+   \subfloat[$x_w(t)$]{
+  	\includegraphics[width=\linewidth/2]{LabB/Task51_xw.pdf}
+  }
+  \caption{Simulation results (the robot falls after 5.5 seconds)}
   \label{fig:fig1}
 \end{figure}
 
-One can see that the command is oscillating. This might be due to high frequency noises coming from the sensors and then transmitted to the PID's derivative action (we didn't use any filter).
+The command goes at its maximum value at $t=5 s$. It corresponds to the time when the robot stops moving (i.e. $x_w$ is stabilized), before going the other way. We think this brutal command is the reason why the robot fell down.
+One can also notice that the command is oscillating. This might be due to high frequency noises coming from the sensors and then transmitted to the PID's derivative action (we didn't use any filter).
 
 %/////////////////////////////////////////////////////////////%
 %/////////////////////////TASK 5.2/////////////////////////%
