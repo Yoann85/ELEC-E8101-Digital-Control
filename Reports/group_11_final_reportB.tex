@@ -21,7 +21,6 @@
 %/////////////////////////////////////////////////////////////%
 \subsection*{Reporting of Task 5.1}
 
-%/////5.1.1/////%
 We implemented our PID with the values we obtained in lab A. Unfortunately, the sampling time (42ms) was not working at all. The robot's wheels were just stuck, making a nearly imperciptible back and forth movement. If the sampling time would have been too high, the system would have been unstable and the command would have maxed the limit out right at the beginning. So we didn't find a good reason to explain this behaviour. We tried to bend the robot to force the wheels in one particular direction, but still they are alterning quickly between forward and backward movement.
 So instead we used the minimum sampling time (5 ms) and tuned the PID's parameter to finally obtain :
 
@@ -55,6 +54,47 @@ One can also notice that the command is oscillating. This might be due to high f
 %/////////////////////////////////////////////////////////////%
 \subsection*{Reporting of Task 5.2}
 
+%/////5.2.1/////%
+5.2.1 Here are the controllability $\mathcal{C}$ and observability $\mathcal{O}$ matrices in parametric and numeric form (according to lab A state-space):
+
+\begin{equation*}
+\mathcal{C}=
+	\begin{bmatrix}
+	B & AB & AAB
+	\end{bmatrix}
+	=1.10^5
+	\begin{bmatrix}
+	0 & 0 & 4.10^{-4} & 0 \\
+	4.10^{-4} & 0 & -0.3087 & -1.44.10^{-2} \\
+	0 & 0 & -1.6.10^{-3} & 0 \\
+	-1.6.10^{-3} & 0 & 1.3216 & 6.15.10^{-2}
+	\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+\mathcal{O}=
+	\begin{bmatrix}
+	C \\
+	AC \\
+	AAC \\
+	AAAC \\
+	\end{bmatrix}
+	=1.10^6
+	\begin{bmatrix}
+	0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 \\
+	0 & 3.3.10^{-3} & 1.10^{-4} & -1.10^{-4} \\
+	0 & -2.7943 & -0.0262 & 0.0587
+	\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+\Delta\mathcal{C}=-1.10^{-5} \;\; \Delta\mathcal{O}=0
+\end{equation*}
+
+$\mathcal{C}$ matrice is full-rank (4), therefore the system is controllable. 
+$\mathcal{O}$ matrice is not full-rank, therefore the system is non-observable.
+
+
+
 \end{document}
 
 %	INLINE EQUATION FORMAT
@@ -70,10 +110,9 @@ One can also notice that the command is oscillating. This might be due to high f
 %\begin{equation*}
 %x=
 %	\begin{bmatrix}
-%	x_11 x_12\\
-%	x_21 x_22\\
-%	x_31 x_32\\
-%
+%	x_11 & x_12\\
+%	x_21 & x_22\\
+%	x_31 & x_32\\
 %	\end{bmatrix}
 %\end{equation*}
 
