@@ -99,10 +99,18 @@ $\mathcal{O}$ matrice is not full-rank, therefore the system is non-observable.
 This can be due to some missing physical sensors.\\
 
 %/////5.2.2.b/////%
-5.2.2 b) We should design observer based on state-space model to obtain specific closed-loop characteristics of the estimation error. We should build state estimator to obtain our estimation state vector so we can compute estimation error (and therefore observe all states).\\
+5.2.2 b) In order to have an observable system, we just need to make the component $x_w$ observable. Once $x_w$ and $\theta_b$ are observable, we can then derive other states $\dot x_w$ and $\dot \theta_b$. We can not add a sensor to physcally measure $x_w$ but one can get it from the wheels' angular speed and diameter.\\
 
 %/////5.2.2.c/////%
-5.2.2 c) TODO
+5.2.2 c) We just added a component to C, therefore we will have two outputs :
+
+\begin{equation*}
+C=
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0\\
+\end{bmatrix}
+\end{equation*}
 
 
 %/////////////////////////////////////////////////////////////%
@@ -111,7 +119,7 @@ This can be due to some missing physical sensors.\\
 \subsection*{Reporting of Task 5.3}
 
 %/////5.3.1/////%
-5.3.1
+5.3.1 s
 
 \end{document}
 
