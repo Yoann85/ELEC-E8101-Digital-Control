@@ -1,6 +1,0 @@
-We have not be able to compute the reduced order estimator.
-The reason is bcause we found some problems following the guide with the notation, so finally when trying to compute M1, M2 etc, it was not possible because of matrix dimension problems in multiplications.
-However, the code of what we tried is attached.
-First thing we did is to select a V such that the z obtained is an identity matrix. V should be a 3x4 matrix in order to T be invertible. Therefore V=(MATIX 1). Therefore, future calculations will be easier with z as an identity matrix.
-
-Later, we just try to follow the steps (and understand them) in the guideline and when we reach the M1 parameter calculation it was not possible to compute it because of matrix dimension error in multiplication. Therefore, we know we have make wrong any step sellecting any matrix, but, even we have tried to find it and solve it, it has not be achieved: we lost us with the notation.

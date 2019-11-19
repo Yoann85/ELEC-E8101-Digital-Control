@@ -119,7 +119,83 @@ C=
 \subsection*{Reporting of Task 5.3}
 
 %/////5.3.1/////%
-5.3.1 s
+5.3.1 Here are the eigen values of the matrix A before any modification (some are approximated) :
+\begin{equation*}
+p_1=0 \qquad p_2=-843.4 \qquad p_3=-5.6 \qquad p_4=5.7
+\end{equation*}
+
+One can see that one pole is an integrator ($p_1=0$), another is unstable ($p_4>0$), another is stable but slow ($p_3$) and the last is stable and fast, we can keep it as is ($p_2$).
+First, we want all the poles to be stable ($<0$).Then, we want to approximate the system as being second order. Therefore, we can choose two dominant poles such that two other poles can be negligated. One can say that a ratio of 6 is enough to declare a pole as negligeable. Therefore, we can take :
+\begin{equation*}
+p_1=-2 \qquad p_2=-843.4 \qquad p_3=-12 \qquad p_4=-3
+\end{equation*}
+The ratio between poles is the only thing that matters, but we also took poles with small magnitude in order to have a realistic controller (i.e. $p_1$ and $p_4$ are slow enough so that they won't require the controller to provide too much energy).
+So now $p_2$ and $p_3$ can be negligated compared to the slowest pole $p_1$. We end up with the following poles:
+\begin{equation*}
+p_1=-2 \qquad p_2=-3
+\end{equation*}
+
+%/////5.3.2/////%
+5.3.2 We want to find a gain matrix $K$ such that eigen values of $A-BK$ are equals to the poles previsouly chosen. For that, one can use the Matlab function \emph{place} to which we provide mtrices $A$,$B$ and the chosen poles vector. We obtain the following values:
+\begin{equation*}
+K=
+\begin{bmatrix}
+-47.5 & -64.7 & -103.4 & -15.2
+\end{bmatrix}
+\end{equation*}
+
+%/////5.3.3/////%
+5.3.3 We then implement this SS controller in Simulink and obtain the following result:
+\begin{figure}[H]
+\subfloat[$u(t)$]{
+  	\includegraphics[width=\linewidth]{LabB/Task53_ssCtrl_vm.pdf}
+  }
+  \\
+  \subfloat[$\theta_b(t)$]{
+  	\includegraphics[width=\linewidth]{LabB/Task53_ssCtrl_Thetab.pdf}
+  }
+  \caption{Simulation results with first SS controller}
+  \label{fig:fig2}
+\end{figure}
+One can notice that the system is stable (the robot doesn't fall). Moreover, the command is realistic as the voltage does not go beyond 6 Volts (batteries full capacity is 7.2V).
+
+
+%/////////////////////////////////////////////////////////////%
+%/////////////////////////TASK 5.4/////////////////////////%
+%/////////////////////////////////////////////////////////////%
+\subsection*{Reporting of Task 5.4}
+Unfortunately, we were not able to compute the reduced order estimator.
+The reason is that we found some problems following the guide with the notations, so finally when trying to compute $M_1$, $M_2$ etc, it was not possible because of matrix dimension problems in multiplications.
+However, the code of what we tried is attached.
+First thing we did is to select a $V$ such that the $z$ obtained is an identity matrix. $V$ should be a 3x4 matrix in order to have an invertible T. Therefore :
+\begin{equation*}
+V=
+\begin{bmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+
+Therefore, future calculations will be easier with $z$ as an identity matrix.
+
+Later, we just tried to follow the steps (and understand them) in the guideline and when we reached the $M_1$ parameter calculation it was not possible to compute it because of matrix dimension error in multiplication. We suspect the problem to be a wrong choice in our matrices but we tried to read again and again the guideline and despite this we lost ourselves in the variables notations.
+
+
+
+%/////////////////////////////////////////////////////////////%
+%/////////////////////////TASK 5.5/////////////////////////%
+%/////////////////////////////////////////////////////////////%
+\subsection*{Reporting of Task 5.5}
+%/////5.5.1/////%
+5.5.1 We formed a state-space system with the matrices $A$,$B$,$C$ and $D$. Then we discretized this ss into a discrete one with a sampling time of $h=5 ms$ and the zero-holder method using Matlab's c2d function.
+
+5.5.2 Then we map all poles chosen previously from $s$- to $z$-domain applying the equivalence formula $z_i=e^{p_ih}$.
+
+
+\subsection*{Lab B conclusion}
+During this lab we tested our Lab A's PID on the robot and obtained quite good result for this kind of controller. We tried to improve it before designing a more advanced state-space controller by pole placement method. It worked on simulation but we didn't try it on the robot. Then we tried to design a state observer. We obtained the full order one, but unfortunately didn't manage to compute the reduced order one. We should work deeper on this topic for the exam...
+A lack of time prevented us from doing some simulations and tests over the robot.
 
 \end{document}
 
