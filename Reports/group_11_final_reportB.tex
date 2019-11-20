@@ -164,6 +164,19 @@ One can notice that the system is stable (the robot doesn't fall). Moreover, the
 %/////////////////////////TASK 5.4/////////////////////////%
 %/////////////////////////////////////////////////////////////%
 \subsection*{Reporting of Task 5.4}
+
+%/////5.4.1/////%
+5.4.1 Here is the full observer $L$ matrix:
+\begin{equation*}
+L=
+\begin{bmatrix}
+2.93 & 0.82 \\
+-0.58 & 0.87 \\
+2.22 & 12.11 \\
+10.78 & 55.59
+\end{bmatrix}
+\end{equation*}
+
 Unfortunately, we were not able to compute the reduced order estimator.
 The reason is that we found some problems following the guide with the notations, so finally when trying to compute $M_1$, $M_2$ etc, it was not possible because of matrix dimension problems in multiplications.
 However, the code of what we tried is attached.
@@ -181,6 +194,35 @@ Therefore, future calculations will be easier with $z$ as an identity matrix.
 
 Later, we just tried to follow the steps (and understand them) in the guideline and when we reached the $M_1$ parameter calculation it was not possible to compute it because of matrix dimension error in multiplication. We suspect the problem to be a wrong choice in our matrices but we tried to read again and again the guideline and despite this we lost ourselves in the variables notations.
 
+
+%/////5.4.2/////%
+5.4.2 Here are the simulations (the reduced observer parameters come from teacher's values):
+\begin{figure}[H]
+\subfloat[$\theta_b(t)$ in green, $\widehat{\theta_b}^{full}(t)$ in blue, $\widehat{\theta_b}^{reduced}(t)$ in red]{
+  	\includegraphics[trim=15cm 5cm 15cm 5cm, width=\textwidth]{LabB/Task54_full_Observer_Thetab.pdf}
+  }
+  \\
+  \subfloat[$x_w(t)$ in green, $\widehat{x_w}^{full}(t)$ in blue, $\widehat{x_w}^{reduced}(t)$ in red]{
+  	\includegraphics[trim=15cm 5cm 15cm 5cm, width=\textwidth]{LabB/Task54_full_Observer_x_w_vm.pdf}
+  }
+  \caption{Simulation results with full and reduced observers}
+  \label{fig:fig2}
+\end{figure}
+We can observe that $\theta_b$ with full Luenberger observer goes to opposite direction compared to true $\theta_b$. We think this might be due to some negative gain in our $L$ matrix.
+Furthermore, we can also observe that our robot is going away to an infinite position to stay balanced. The reduced order observer has got a more important error than the full one. This is logical as it is, by definition, less accurate. The fact that it has not been computed with our system's values may also increase the final error.
+
+%/////5.4.3/////%
+5.4.3 By measurements with cursors, we can compute:
+\begin{equation*}
+\left|\theta_b - \widehat{\theta_b}^{full}\right| = (3.86+6.485)\cdot10^{-3} = 10,345\cdot10^{-3} rad
+\end{equation*}
+The absolute error of angle is quite small.
+
+We can also compute :
+\begin{equation*}
+\left|x_w - \widehat{x_w}^{full}\right| \approx 0 m
+\end{equation*}
+Here, there is no difference between both positions of the robot. We can conclude that the system is alaways compensating same error sign on $\theta_b$ so he is going to same direction to compensate this one. That's why our robot is going to an infinite position.
 
 
 %/////////////////////////////////////////////////////////////%
